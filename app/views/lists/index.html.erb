@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Lists</h1>
+
+
+    <% @lists.each do |list| %>
+
+      <div class="row">
+      <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title"><%= list.name %></h5>
+          <p class="card-text">
+          <% if list.purchased? %>
+            <div class="alert alert-success" role="alert">Purchased</div>
+          <% else %>
+            <div class="alert alert-danger" role="alert">Not purchased</div>
+          <% end %>
+          </p>
+          
+          <button type="button" class="btn btn-outline-success"><%= link_to 'Show', list %></button>
+          <button type="button" class="btn btn-outline-primary"><%= link_to 'Edit', edit_list_path(list) %></button>
+          <button type="button" class="btn btn-outline-danger"><%= link_to 'Destroy', list, method: :delete, data: { confirm: 'Are you sure?' } %></button>
+        </div>
+      </div>
+    </div>
+    </div>
+      <br>
+    <% end %>
+
+<br>
+
+<button type="button" class="btn btn-info">
+  <%= link_to 'New List', new_list_path %>
+</button>
